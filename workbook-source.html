@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>A Bastion of Faith — Family Workbook</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap"><style>:root {
+  /* Layout: a study-manual column with scripture callouts and activity panels */
+  --bg: #dfe4ea; --surface: #eef1f4; --ink: #14233a; --mute: #536173;
+  --line: #c3cbd5; --accent: #1f4e8c; --accent-d: #163a69; --gold: #b08a3e; --silver: #8f9bab;
+  --head: #1f3f6b; --onhead: #e9eef4; --onhead-mute: #b8c4d2;
+  --danger: #a64b3c; --onacc: #ffffff;
+  --sky: #cfe2f0; --grass: #b9d3a8; --leaf: #6f9a5a; --trunk: #7a5a3c; --red: #c0392b; --stone: #c9ced4; --white: #ffffff;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121820; --surface: #1a222c; --ink: #e6ebf0; --mute: #a3adb8; --line: #2c3743;
+  --accent: #7fa7d6; --accent-d: #5f8cc2; --gold: #d2ad5f; --silver: #b8c2cc; --head: #0c1624; --onhead: #e3e8ee; --onhead-mute: #9aa7b6; --danger: #d27a6a; --onacc: #0f1620;
+  --sky: #2a3e52; --grass: #33482c; --leaf: #4f7a3e; --trunk: #6b4f35; --red: #d0503f; --stone: #4a5561; --white: #dfe5ea; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #121820; --surface: #1a222c; --ink: #e6ebf0; --mute: #a3adb8; --line: #2c3743;
+  --accent: #7fa7d6; --accent-d: #5f8cc2; --gold: #d2ad5f; --silver: #b8c2cc; --head: #0c1624; --onhead: #e3e8ee; --onhead-mute: #9aa7b6; --danger: #d27a6a; --onacc: #0f1620;
+  --sky: #2a3e52; --grass: #33482c; --leaf: #4f7a3e; --trunk: #6b4f35; --red: #d0503f; --stone: #4a5561; --white: #dfe5ea; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 var(--body); }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+img, svg { max-width: 100%; display: block; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* header */
+.site-head { background: var(--head); border-bottom: 3px solid var(--silver); }
+.site-head .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 14px; }
+.brand { font-family: var(--display); font-size: 1.2rem; font-weight: 600; color: var(--onhead); text-decoration: none; }
+.brand span { color: var(--silver); }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .95rem; }
+.nav a { text-decoration: none; color: var(--onhead-mute); padding: 4px 0; border-bottom: 2px solid transparent; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--onhead); border-color: var(--silver); }
+
+/* lesson heading, styled after a weekly study manual */
+.lesson-head { padding-block: 40px 24px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; color: var(--mute); margin: 0 0 8px; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.12; margin: 0 0 10px; text-wrap: balance; }
+.subtitle { font-family: var(--display); font-style: italic; font-size: 1.25rem; color: var(--accent); margin: 0; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 1.6rem; margin: 0 0 12px; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 1.25rem; margin: 0 0 8px; }
+h4 { font-family: var(--display); font-size: 1.1rem; margin: 0 0 8px; }
+
+.lead-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.prose { min-width: 0; }
+.prose p { margin: 0 0 14px; max-width: 65ch; }
+
+/* Christ image slot */
+.christ { margin: 0; background: var(--surface); border: 1px solid var(--line); }
+.christ img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.christ figcaption { font-size: .85rem; color: var(--mute); padding: 8px 12px; }
+.christ .ph { display: none; aspect-ratio: 4 / 5; place-content: center; text-align: center; padding: 20px; background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 10px, var(--surface) 10px, var(--surface) 20px); color: var(--mute); font-size: .9rem; }
+.christ.missing img { display: none; }
+.christ.missing .ph { display: grid; }
+.ph b { color: var(--ink); font-family: var(--display); font-size: 1.05rem; }
+
+/* scripture callout */
+.scripture { margin: 28px 0; padding: 18px 22px; background: var(--surface); border-top: 3px solid var(--silver); }
+.scripture blockquote { margin: 0; font-family: var(--display); font-size: 1.2rem; line-height: 1.5; }
+.scripture cite { display: block; margin-top: 8px; font-style: normal; font-size: .9rem; color: var(--mute); letter-spacing: .04em; }
+
+.section { padding-block: 28px; border-top: 1px solid var(--line); }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.concept { margin: 0; }
+.concept svg { width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); }
+.concept figcaption { font-size: .9rem; color: var(--mute); margin-top: 8px; }
+.nist-box { font-size: .95rem; background: var(--surface); border: 1px solid var(--line); padding: 14px 16px; }
+.nist-box p { margin: 0 0 6px; }
+.nist-box p:last-child { margin: 0; }
+.label { text-transform: uppercase; letter-spacing: .1em; font-size: .72rem; color: var(--accent); font-weight: 600; }
+
+/* activity */
+.activity { background: var(--surface); border: 1px solid var(--line); padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; }
+.activity ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.ex { min-width: 0; }
+.ex-kicker { text-transform: uppercase; letter-spacing: .1em; font-size: .72rem; color: var(--accent); font-weight: 600; margin: 0 0 8px; }
+.ex-banner, .ex-drill, .ex-review, .ex-cards { border: 1px dashed var(--line); padding: 18px; background: var(--bg); }
+.ex-banner ul { margin: 0 0 10px; padding-left: 1.2em; font-family: var(--display); font-size: 1.05rem; }
+.ex-sign, .ex-note { font-size: .85rem; color: var(--mute); margin: 0; }
+.ex-drill ol { margin-bottom: 10px; }
+.cards3 { display: grid; gap: 10px; }
+.sc { background: var(--surface); border: 1px solid var(--line); padding: 12px 14px; font-size: .95rem; }
+.rv { display: grid; gap: 2px; padding: 8px 0; border-top: 1px solid var(--line); font-size: .95rem; }
+.rv b { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.ex-svg svg { width: 100%; height: auto; border: 1px solid var(--line); }
+
+/* spot the difference */
+.ex-spot { grid-column: 1 / -1; }
+.spot-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.spot-pair figure { margin: 0; }
+.spot-pair svg { width: 100%; height: auto; border: 1px solid var(--line); }
+.spot-pair figcaption { font-size: .85rem; color: var(--mute); margin-top: 4px; }
+.spot-target svg { cursor: crosshair; }
+.found-ring { fill: none; stroke: var(--danger); stroke-width: 3; }
+.spot-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+.spot-bar span { font-weight: 600; margin-right: auto; font-variant-numeric: tabular-nums; }
+button { font: inherit; font-size: .9rem; padding: 7px 14px; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); cursor: pointer; }
+button:hover { background: var(--accent); color: var(--onacc); }
+.spot-lesson { margin: 14px 0 0; padding: 12px 14px; background: var(--bg); border-left: 3px solid var(--silver); font-family: var(--display); font-size: 1.05rem; }
+
+.questions ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; font-family: var(--display); font-size: 1.1rem; }
+
+/* pager */
+.pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 28px 48px; }
+.pager a { text-decoration: none; padding: 10px 16px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.pager a:hover { border-color: var(--accent); }
+
+/* overview */
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.intro-quote { font-family: var(--display); font-size: 1.35rem; line-height: 1.45; margin: 20px 0 10px; }
+.intro-quote + p { color: var(--mute); margin: 0 0 18px; }
+.download { display: inline-block; margin-top: 8px; padding: 12px 18px; background: var(--accent); color: var(--onacc); text-decoration: none; font-weight: 600; }
+.download:hover { background: var(--accent-d); }
+.grid-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-block: 8px 48px; }
+.tcard { display: grid; grid-template-rows: auto 1fr; background: var(--surface); border: 1px solid var(--line); color: var(--ink); text-decoration: none; transition: border-color .15s, transform .15s; }
+.tcard:hover { border-color: var(--accent); transform: translateY(-2px); }
+.tcard svg { width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+.tcard .tc-body { padding: 14px 16px 18px; display: grid; gap: 6px; align-content: start; }
+.tcard .tc-tag { font-family: var(--display); font-style: italic; color: var(--accent); }
+.tcard p { margin: 0; font-size: .95rem; color: var(--mute); }
+.site-foot { border-top: 1px solid var(--line); font-size: .85rem; color: var(--mute); }
+.site-foot .wrap { padding-block: 20px; }
+
+/* svg paint classes */
+.f-sky { fill: var(--sky); } .f-grass { fill: var(--grass); } .f-leaf { fill: var(--leaf); } .f-trunk { fill: var(--trunk); }
+.f-red { fill: var(--red); } .f-stone { fill: var(--stone); } .f-white { fill: var(--white); } .f-paper { fill: var(--surface); }
+.f-acc { fill: var(--accent); } .f-accd { fill: var(--accent-d); } .f-gold { fill: var(--gold); } .f-danger { fill: var(--danger); } .f-ink { fill: var(--ink); }
+.st-ink { stroke: var(--ink); stroke-width: 1.2; } .st-wall { stroke: var(--ink); stroke-width: 6; }
+.st-danger { stroke: var(--danger); stroke-width: 3; } .st-gold { stroke: var(--gold); stroke-width: 3; } .st-stone { stroke: var(--stone); }
+.t-ink { fill: var(--ink); } .t-mute { fill: var(--mute); } .t-gold { fill: var(--gold); } .t-danger { fill: var(--danger); } .t-onacc { fill: var(--onacc); }
+.t-serif { font-family: var(--display); }
+svg text { font-family: var(--body); }
+
+@media (max-width: 760px) {
+  .lead-grid, .two, .activity, .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .grid-cards { grid-template-columns: minmax(0, 1fr); }
+  .christ { max-width: 360px; }
+}
+@media (min-width: 761px) and (max-width: 960px) { .grid-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+@page { size: letter; margin: 0.6in; }
+body { background: #fff; font-size: 12.5pt; }
+:root { --surface: #f3f5f8; --bg: #f3f5f8; }
+.wb-page { break-after: page; }
+.wb-page:last-child { break-after: auto; }
+.cover { min-height: 9.4in; display: grid; align-content: center; gap: 14px; text-align: left; break-after: page; }
+.cover h1 { font-size: 40pt; }
+.cover svg { max-width: 4.2in; }
+.wb-two { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: start; }
+.wb-two svg { width: 100%; height: auto; border: 1px solid var(--line); }
+.small { font-size: 10.5pt; color: var(--mute); }
+.lines { display: grid; gap: 0; margin: 6px 0 12px; }
+.lines span { display: block; height: 26px; border-bottom: 1px solid var(--line); }
+.q p { margin: 10px 0 0; font-family: var(--display); }
+.mt { margin-top: 18px; }
+.ex { margin-top: 12px; }
+.spot-pair svg { border: 1px solid var(--line); }
+.ex-svg svg { max-width: 3in; }
+</style></head><body>
+<section class="cover">
+<p class="eyebrow">Family Workbook · Alma 46–50</p>
+<h1>A Bastion of Faith</h1>
+<p class="subtitle">Guarding the home with Captain Moroni and the NIST Cybersecurity Framework</p>
+<svg viewBox="0 0 320 260" role="img" aria-label="The NIST framework as a cycle with Govern at the center">
+<rect class="f-paper" width="320" height="260"/>
+<circle class="st-stone" fill="none" stroke-width="10" cx="160" cy="130" r="88"/>
+<circle class="f-gold" cx="160" cy="130" r="36"/>
+<text class="t-ink t-serif" x="160" y="135" text-anchor="middle" font-size="13">Govern</text>
+<g font-size="12" text-anchor="middle">
+<circle class="f-acc" cx="160" cy="42" r="26"/><text class="t-onacc" x="160" y="46">Identify</text>
+<circle class="f-acc" cx="244" cy="103" r="26"/><text class="t-onacc" x="244" y="107">Protect</text>
+<circle class="f-acc" cx="212" cy="201" r="26"/><text class="t-onacc" x="212" y="205">Detect</text>
+<circle class="f-acc" cx="108" cy="201" r="26"/><text class="t-onacc" x="108" y="205">Respond</text>
+<circle class="f-danger" cx="76" cy="103" r="26"/><text class="t-onacc" x="76" y="107">Recover</text>
+</g>
+<text class="t-mute" x="160" y="252" text-anchor="middle" font-size="10">After recovering, update the plan and start again.</text>
+</svg>
+<p class="intro-quote">“I teach them correct principles, and they govern themselves.” — Joseph Smith</p>
+<p>Work through one part each week. Read the scripture, do the activity together, and write your answers. More activities will be added to each section over time.</p>
+<p class="small">Family name: ______________________ &nbsp;&nbsp; Started on: ____________</p>
+</section>
+<section class="wb-page">
+<p class="eyebrow">Part 1 of 6 · Alma 46:12</p>
+<h2>Govern</h2><p class="subtitle">Teach correct principles first.</p>
+<div class="scripture"><blockquote>“And he wrote upon it—In memory of our God, our religion, and freedom, and our peace, our wives, and our children.”</blockquote><cite>Alma 46:12</cite></div>
+<div class="wb-two"><div><p>Joseph Smith was once asked how he was able to govern so many people without it all falling into chaos. He answered, “I teach them correct principles, and they govern themselves.”</p><p class="small"><b>NIST:</b> Set the direction: the values, roles, and policies everything else follows. <b>At home:</b> Write down family rules for devices, decide who owns which settings, and agree on what happens when a rule is broken.</p></div><figure class="concept"><svg viewBox="0 0 320 220" role="img" aria-label="The title of liberty raised on a pole">
+<rect class="f-sky" width="320" height="220"/>
+<rect class="f-grass" y="190" width="320" height="30"/>
+<rect class="f-trunk" x="70" y="20" width="6" height="175"/>
+<circle class="f-gold" cx="73" cy="18" r="6"/>
+<path class="f-paper st-ink" d="M76 32 C140 22 190 48 260 34 L262 118 C195 132 140 106 76 118 Z"/>
+<text class="t-ink t-serif" x="168" y="62" text-anchor="middle" font-size="11">IN MEMORY OF</text>
+<text class="t-ink t-serif" x="168" y="78" text-anchor="middle" font-size="11">OUR GOD, OUR RELIGION,</text>
+<text class="t-ink t-serif" x="168" y="94" text-anchor="middle" font-size="11">AND FREEDOM, AND OUR PEACE,</text>
+<text class="t-ink t-serif" x="168" y="110" text-anchor="middle" font-size="9">OUR WIVES, AND OUR CHILDREN</text>
+<text class="t-mute" x="160" y="210" text-anchor="middle" font-size="10">Alma 46:12</text>
+</svg></figure></div>
+</section>
+<section class="wb-page">
+<p class="label">Activity</p><h3>Family Title of Liberty</h3><ol><li>Gather the family with a large sheet of paper or poster board.</li><li>Read Alma 46:12 together and talk about why Moroni wrote it down.</li><li>Write what your home stands for and defends, in your own words.</li><li>Have everyone sign it, then hang it where devices are charged so the “why” sits next to the screens.</li></ol>
+<div class="ex ex-banner"><p class="ex-kicker">Example</p><h4>In our home we stand for</h4>
+<ul><li>Jesus Christ and His gospel</li><li>Telling the truth, online and off</li><li>Treating our bodies and minds as sacred</li><li>Coming to Mom and Dad with anything</li></ul>
+<p class="ex-sign">Signed: Dad · Mom · ________</p></div>
+<h3 class="mt">Ponder and write</h3><div class='q'><p>What correct principles do we want our children to carry into moments we can’t control?</p><div class="lines"><span></span><span></span></div></div><div class='q'><p>If our family had a title of liberty, what would it say?</p><div class="lines"><span></span><span></span></div></div>
+<h3 class="mt">Our family’s plan</h3><div class="lines"><span></span><span></span><span></span></div>
+</section><section class="wb-page">
+<p class="eyebrow">Part 2 of 6 · Alma 48:9</p>
+<h2>Identify</h2><p class="subtitle">Find the weak places.</p>
+<div class="scripture"><blockquote>“And in their weakest fortifications he did place the greater number of men.”</blockquote><cite>Alma 48:9</cite></div>
+<div class="wb-two"><div><p>Where is your home weak? Picture a fortress with only three walls. Where would you place most of your defenses? You would probably put most of your troops along the side with no wall. Would you put all of them there, though? No. You would keep some on the walls, because without them people would climb over and still get in.</p><p class="small"><b>NIST:</b> Know what is worth protecting and how it could be attacked. <b>At home:</b> Make a list of every device on your network, every account your kids use, and which ones have the least protection.</p></div><figure class="concept"><svg viewBox="0 0 320 240" role="img" aria-label="A fortress seen from above with one wall missing and a tunnel under another">
+<rect class="f-grass" width="320" height="240"/>
+<rect class="f-stone" x="70" y="40" width="180" height="160"/>
+<g class="st-wall" fill="none"><path d="M250 40 L70 40 L70 200 L250 200"/></g>
+<line class="st-danger" x1="250" y1="40" x2="250" y2="200" stroke-dasharray="6 6"/>
+<text class="t-danger" x="258" y="124" font-size="11">no wall</text>
+<g class="f-acc"><circle cx="238" cy="70" r="5"/><circle cx="238" cy="90" r="5"/><circle cx="238" cy="110" r="5"/><circle cx="238" cy="130" r="5"/><circle cx="238" cy="150" r="5"/><circle cx="238" cy="170" r="5"/><circle cx="222" cy="100" r="5"/><circle cx="222" cy="140" r="5"/>
+<circle cx="110" cy="52" r="5"/><circle cx="82" cy="120" r="5"/><circle cx="160" cy="188" r="5"/></g>
+<path class="st-gold" fill="none" stroke-dasharray="4 4" d="M120 235 C120 215 130 205 140 190 C150 170 150 160 150 150"/>
+<text class="t-gold" x="128" y="230" font-size="10" text-anchor="end">catacombs</text>
+<text class="t-ink" x="160" y="24" text-anchor="middle" font-size="12">Most troops at the gap, some on every wall</text>
+</svg></figure></div>
+</section>
+<section class="wb-page">
+<p class="label">Activity</p><h3>Map the Fortress</h3><ol><li>Draw your home as a fortress on a big sheet of paper.</li><li>Add a gate for every way the world gets in: phones, games, apps, friends, school, TV.</li><li>Talk about which gates are strongest and which are weakest. Mark the weak ones in red.</li><li>Decide together where to put the most “troops,” and what one change you will make this week.</li></ol>
+<div class="ex ex-svg"><svg viewBox="0 0 320 240" role="img" aria-label="Example family fortress map with gates labeled">
+<rect class="f-paper" width="320" height="240"/>
+<rect class="f-stone st-wall" x="60" y="40" width="200" height="160" fill-opacity="1"/>
+<text class="t-ink t-serif" x="160" y="125" text-anchor="middle" font-size="16">Our Home</text>
+<g font-size="10" class="t-ink">
+<rect class="f-acc" x="140" y="34" width="40" height="12"/><text x="160" y="28" text-anchor="middle">Phones</text>
+<rect class="f-acc" x="140" y="194" width="40" height="12"/><text x="160" y="222" text-anchor="middle">School</text>
+<rect class="f-acc" x="54" y="80" width="12" height="30"/><text x="48" y="98" text-anchor="end">Games</text>
+<rect class="f-acc" x="54" y="140" width="12" height="30"/><text x="48" y="158" text-anchor="end">TV</text>
+<rect class="f-danger" x="254" y="80" width="12" height="30"/><text x="272" y="98">Apps</text>
+<rect class="f-danger" x="254" y="140" width="12" height="30"/><text x="272" y="158">Friends</text>
+</g>
+<text class="t-danger" x="160" y="150" text-anchor="middle" font-size="10">red = weakest gates</text>
+</svg></div>
+<h3 class="mt">Ponder and write</h3><div class='q'><p>Which gate into our home is weakest right now?</p><div class="lines"><span></span><span></span></div></div><div class='q'><p>Where could something get in that we haven’t noticed yet, like the catacombs under the wall?</p><div class="lines"><span></span><span></span></div></div>
+<h3 class="mt">Our family’s plan</h3><div class="lines"><span></span><span></span><span></span></div>
+</section><section class="wb-page">
+<p class="eyebrow">Part 3 of 6 · Alma 48:7</p>
+<h2>Protect</h2><p class="subtitle">Prepare the minds of the people.</p>
+<div class="scripture"><blockquote>“Moroni, on the other hand, had been preparing the minds of the people to be faithful unto the Lord their God.”</blockquote><cite>Alma 48:7</cite></div>
+<div class="wb-two"><div><p>This is where you patch the holes and make plans for when the fortifications fall. A plan should not be made during an attack. When the attack comes, your children should already know the plan and follow it. This is when you set it up.</p><p class="small"><b>NIST:</b> Put safeguards in place before an attack comes. <b>At home:</b> Turn on content filtering, keep devices updated, use strong passwords and two-factor sign-in, and keep devices out of bedrooms at night.</p></div><figure class="concept"><svg viewBox="0 0 320 240" role="img" aria-label="Three rings of protection around the home with correct principles at the center">
+<rect class="f-paper" width="320" height="240"/>
+<circle class="f-stone" cx="160" cy="120" r="108"/>
+<circle class="f-sky" cx="160" cy="120" r="76"/>
+<circle class="f-gold" cx="160" cy="120" r="44"/>
+<text class="t-ink" x="160" y="30" text-anchor="middle" font-size="11">Filters &amp; device settings</text>
+<text class="t-ink" x="160" y="62" text-anchor="middle" font-size="11">Family rules &amp; plans</text>
+<text class="t-ink t-serif" x="160" y="116" text-anchor="middle" font-size="12">Correct</text>
+<text class="t-ink t-serif" x="160" y="132" text-anchor="middle" font-size="12">principles</text>
+<text class="t-mute" x="160" y="226" text-anchor="middle" font-size="10">Outer walls can fall. The center has to hold.</text>
+</svg></figure></div>
+</section>
+<section class="wb-page">
+<p class="label">Activity</p><h3>Mind Fire Drill</h3><ol><li>Explain that a fire drill works because you practice before there is a fire.</li><li>Act out a few scenarios: a pop-up, a link from a friend, a video that turns bad.</li><li>Each time, practice the same three steps: close it, walk away, tell a parent.</li><li>Run the drill again in a month, just like a real fire drill.</li></ol>
+<div class="ex ex-drill"><p class="ex-kicker">Drill card</p><h4>A video turns bad</h4>
+<ol><li><b>Close it.</b> Hit the home button or close the lid.</li><li><b>Walk away.</b> Leave the room.</li><li><b>Tell a parent.</b> Right away, every time.</li></ol>
+<p class="ex-note">Practiced on: ________</p></div>
+<h3 class="mt">Ponder and write</h3><div class='q'><p>What is our family’s plan when something bad shows up on a screen?</p><div class="lines"><span></span><span></span></div></div><div class='q'><p>Has everyone in the family practiced it out loud?</p><div class="lines"><span></span><span></span></div></div>
+<h3 class="mt">Our family’s plan</h3><div class="lines"><span></span><span></span><span></span></div>
+</section><section class="wb-page">
+<p class="eyebrow">Part 4 of 6 · Alma 50:4</p>
+<h2>Detect</h2><p class="subtitle">Know what ordinary looks like.</p>
+<div class="scripture"><blockquote>“He caused towers to be erected that overlooked those works of pickets.”</blockquote><cite>Alma 50:4</cite></div>
+<div class="wb-two"><div><p>To detect something out of the ordinary, you must first know what ordinary is. Part of this is knowing what the companionship of the Spirit feels like, and what it feels like when the Spirit leaves. You also need a routine, and to know how you normally act, so you can tell when something is different. It is the difference between normal activity and odd behavior.</p><p class="small"><b>NIST:</b> Notice when something is wrong, as early as possible. <b>At home:</b> Watch for odd network activity: new devices, logins at strange hours, or traffic to sites your family doesn’t use.</p></div><figure class="concept"><svg viewBox="0 0 320 240" role="img" aria-label="A watchtower overlooking a wall, spotting danger approaching">
+<rect class="f-sky" width="320" height="240"/>
+<rect class="f-grass" y="190" width="320" height="50"/>
+<polygon class="f-gold" fill-opacity=".28" points="96,70 320,120 320,200"/>
+<rect class="f-stone st-wall" x="20" y="150" width="240" height="40"/>
+<rect class="f-stone st-wall" x="78" y="70" width="36" height="80"/>
+<polygon class="f-acc" points="70,72 96,48 122,72"/>
+<circle class="f-ink" cx="96" cy="82" r="5"/>
+<g class="f-danger"><circle cx="290" cy="176" r="7"/><rect x="285" y="182" width="10" height="10"/></g>
+<text class="t-ink" x="200" y="230" text-anchor="middle" font-size="11">Alma 50:4 — towers to see danger early</text>
+</svg></figure></div>
+</section>
+<section class="wb-page">
+<p class="label">Activity</p><h3>Spot the Difference</h3><ol><li>Show two nearly identical pictures and have the family find what changed.</li><li>Ask, “How did you know?” You could only spot it because you knew the original.</li><li>Talk about what it feels like when the Spirit is with you, and when it leaves.</li><li>Ask: what in our home has slowly become “normal” that shouldn’t be?</li></ol>
+<div class="ex ex-spot"><p class="ex-kicker">Circle 5 differences</p><div class="spot-pair">
+<figure><svg viewBox="0 0 300 200" role="img" aria-label="Original picture"><rect class="f-sky" width="300" height="200"/><rect class="f-grass" y="160" width="300" height="40"/><circle class="f-gold" cx="40" cy="35" r="16"/><rect class="f-stone st-ink" x="175" y="62" width="12" height="25"/><rect class="f-white st-ink" x="100" y="100" width="100" height="60"/><polygon class="f-acc" points="92,100 150,60 208,100"/><rect class="f-accd" x="140" y="125" width="20" height="35"/><circle class="f-gold" cx="155" cy="143" r="2.5"/><rect class="f-sky st-ink" x="110" y="112" width="20" height="18"/><rect class="f-sky st-ink" x="170" y="112" width="20" height="18"/><rect class="f-trunk" x="240" y="120" width="10" height="40"/><circle class="f-leaf" cx="245" cy="105" r="25"/><g class="f-red"><circle cx="235" cy="100" r="3.5"/><circle cx="255" cy="98" r="3.5"/><circle cx="248" cy="115" r="3.5"/></g><rect class="f-white st-ink" x="12" y="140" width="5" height="20"/><rect class="f-white st-ink" x="24" y="140" width="5" height="20"/><rect class="f-white st-ink" x="36" y="140" width="5" height="20"/><rect class="f-white st-ink" x="48" y="140" width="5" height="20"/><rect class="f-white st-ink" x="60" y="140" width="5" height="20"/><rect class="f-white st-ink" x="72" y="140" width="5" height="20"/><rect class="f-white st-ink" x="84" y="140" width="5" height="20"/><rect class="f-white st-ink" x="10" y="146" width="80" height="4"/></svg><figcaption>Original</figcaption></figure><figure><svg viewBox="0 0 300 200" role="img" aria-label="Changed picture"><rect class="f-sky" width="300" height="200"/><rect class="f-grass" y="160" width="300" height="40"/><circle class="f-gold" cx="40" cy="35" r="16"/><g class="f-white"><ellipse cx="80" cy="42" rx="18" ry="9"/><ellipse cx="92" cy="36" rx="12" ry="9"/></g><rect class="f-stone st-ink" x="175" y="62" width="12" height="25"/><g class="f-white"><circle cx="181" cy="52" r="5"/><circle cx="186" cy="42" r="6"/><circle cx="192" cy="31" r="7"/></g><rect class="f-white st-ink" x="100" y="100" width="100" height="60"/><polygon class="f-acc" points="92,100 150,60 208,100"/><rect class="f-accd" x="140" y="125" width="20" height="35"/><rect class="f-gold st-ink" x="110" y="112" width="20" height="18"/><rect class="f-sky st-ink" x="170" y="112" width="20" height="18"/><rect class="f-trunk" x="240" y="120" width="10" height="40"/><circle class="f-leaf" cx="245" cy="105" r="25"/><g class="f-red"><circle cx="235" cy="100" r="3.5"/><circle cx="255" cy="98" r="3.5"/></g><rect class="f-white st-ink" x="12" y="140" width="5" height="20"/><rect class="f-white st-ink" x="24" y="140" width="5" height="20"/><rect class="f-white st-ink" x="36" y="140" width="5" height="20"/><rect class="f-white st-ink" x="48" y="140" width="5" height="20"/><rect class="f-white st-ink" x="60" y="140" width="5" height="20"/><rect class="f-white st-ink" x="72" y="140" width="5" height="20"/><rect class="f-white st-ink" x="84" y="140" width="5" height="20"/><rect class="f-white st-ink" x="10" y="146" width="80" height="4"/></svg><figcaption>Changed</figcaption></figure></div></div>
+<h3 class="mt">Ponder and write</h3><div class='q'><p>What does it feel like when the Spirit is with me?</p><div class="lines"><span></span><span></span></div></div><div class='q'><p>What has slowly become normal in my life that shouldn’t be?</p><div class="lines"><span></span><span></span></div></div>
+<h3 class="mt">Our family’s plan</h3><div class="lines"><span></span><span></span><span></span></div>
+</section><section class="wb-page">
+<p class="eyebrow">Part 5 of 6 · Genesis 39:12</p>
+<h2>Respond</h2><p class="subtitle">Leave your garment and flee.</p>
+<div class="scripture"><blockquote>“And he left his garment in her hand, and fled, and got him out.”</blockquote><cite>Genesis 39:12</cite></div>
+<div class="wb-two"><div><p>An action plan was set earlier. Now that the attack has been detected, this is where you act. You remove the influences that need to go, and you remove yourself from the threat.</p><p class="small"><b>NIST:</b> Act on a detected attack to contain it. <b>At home:</b> Disconnect a compromised device, change passwords, block the source, and report scams.</p></div><figure class="concept"><svg viewBox="0 0 320 200" role="img" aria-label="Response steps: close it, walk away, tell a parent">
+<rect class="f-paper" width="320" height="200"/>
+<g font-size="12" class="t-ink" text-anchor="middle">
+<rect class="f-danger" x="10" y="20" width="300" height="34" rx="6"/><text x="160" y="42" class="t-onacc">Something bad shows up</text>
+<rect class="f-acc" x="10" y="78" width="92" height="40" rx="6"/><text x="56" y="102" class="t-onacc">Close it</text>
+<rect class="f-acc" x="114" y="78" width="92" height="40" rx="6"/><text x="160" y="102" class="t-onacc">Walk away</text>
+<rect class="f-acc" x="218" y="78" width="92" height="40" rx="6"/><text x="264" y="102" class="t-onacc">Tell a parent</text>
+<path class="st-ink" fill="none" d="M160 54 L160 74 M102 98 L112 98 M206 98 L216 98"/>
+<text x="160" y="160" class="t-ink t-serif" font-size="13">"He left his garment in her hand, and fled."</text>
+<text x="160" y="180" class="t-mute" font-size="10">Genesis 39:12</text>
+</g>
+</svg></figure></div>
+</section>
+<section class="wb-page">
+<p class="label">Activity</p><h3>Joseph’s Run</h3><ol><li>Read Genesis 39:12 and talk about how fast Joseph left.</li><li>Make scenario cards, like “A friend shows you something on their phone.”</li><li>Take turns drawing a card and acting out how to flee.</li><li>Make the family rule clear: telling a parent is always rewarded, never punished.</li></ol>
+<div class="ex ex-cards"><p class="ex-kicker">Scenario cards</p><div class="cards3">
+<div class="sc">A friend shows you something on their phone that you know is wrong.</div>
+<div class="sc">A message says you won a prize and asks for Mom’s password.</div>
+<div class="sc">A game chat starts asking where you live.</div></div></div>
+<h3 class="mt">Ponder and write</h3><div class='q'><p>What will I do in the first ten seconds?</p><div class="lines"><span></span><span></span></div></div><div class='q'><p>Who will I tell, and how will they respond?</p><div class="lines"><span></span><span></span></div></div>
+<h3 class="mt">Our family’s plan</h3><div class="lines"><span></span><span></span><span></span></div>
+</section><section class="wb-page">
+<p class="eyebrow">Part 6 of 6 · Alma 50:1; D&C 58:42</p>
+<h2>Recover</h2><p class="subtitle">Rebuild the wall stronger.</p>
+<div class="scripture"><blockquote>“Moroni did not stop making preparations. … He who has repented of his sins, the same is forgiven, and I, the Lord, remember them no more.”</blockquote><cite>Alma 50:1; D&C 58:42</cite></div>
+<div class="wb-two"><div><p>Repair the damage, and repent if need be. Then update the plan. Where did it fall short, and how can it be better in the future? What walls need to be rebuilt?</p><p class="small"><b>NIST:</b> Restore what was damaged and improve for next time. <b>At home:</b> Restore from backups, review what happened, and close the hole that let the attack in.</p></div><figure class="concept"><svg viewBox="0 0 320 260" role="img" aria-label="The NIST framework as a cycle with Govern at the center">
+<rect class="f-paper" width="320" height="260"/>
+<circle class="st-stone" fill="none" stroke-width="10" cx="160" cy="130" r="88"/>
+<circle class="f-gold" cx="160" cy="130" r="36"/>
+<text class="t-ink t-serif" x="160" y="135" text-anchor="middle" font-size="13">Govern</text>
+<g font-size="12" text-anchor="middle">
+<circle class="f-acc" cx="160" cy="42" r="26"/><text class="t-onacc" x="160" y="46">Identify</text>
+<circle class="f-acc" cx="244" cy="103" r="26"/><text class="t-onacc" x="244" y="107">Protect</text>
+<circle class="f-acc" cx="212" cy="201" r="26"/><text class="t-onacc" x="212" y="205">Detect</text>
+<circle class="f-acc" cx="108" cy="201" r="26"/><text class="t-onacc" x="108" y="205">Respond</text>
+<circle class="f-danger" cx="76" cy="103" r="26"/><text class="t-onacc" x="76" y="107">Recover</text>
+</g>
+<text class="t-mute" x="160" y="252" text-anchor="middle" font-size="10">After recovering, update the plan and start again.</text>
+</svg></figure></div>
+</section>
+<section class="wb-page">
+<p class="label">Activity</p><h3>Rebuild the Wall</h3><ol><li>After any incident, hold a short, calm family review.</li><li>Ask: What worked? Where did the plan fall short? What wall needs rebuilding?</li><li>Write down one change to the plan.</li><li>End by testifying that repentance makes the wall stronger, not weaker.</li></ol>
+<div class="ex ex-review"><p class="ex-kicker">Family review</p>
+<div class="rv"><b>What worked</b><span>We told Dad right away.</span></div>
+<div class="rv"><b>Where the plan fell short</b><span>The tablet had no filter on the browser app.</span></div>
+<div class="rv"><b>Wall to rebuild</b><span>Turn on filtering for every app, not just the main browser.</span></div></div>
+<h3 class="mt">Ponder and write</h3><div class='q'><p>What did we learn the last time something got through?</p><div class="lines"><span></span><span></span></div></div><div class='q'><p>What one wall will we rebuild this month?</p><div class="lines"><span></span><span></span></div></div>
+<h3 class="mt">Our family’s plan</h3><div class="lines"><span></span><span></span><span></span></div>
+</section>
+</body></html>
