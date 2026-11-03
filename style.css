@@ -49,8 +49,9 @@ h4 { font-family: var(--display); font-size: 1.1rem; margin: 0 0 8px; }
 
 /* Christ image slot */
 .christ { margin: 0; background: var(--surface); border: 1px solid var(--line); }
-.christ img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.christ figcaption { font-size: .85rem; color: var(--mute); padding: 8px 12px; }
+.christ img { width: 100%; height: auto; max-height: 560px; object-fit: cover; object-position: center top; }
+.christ figcaption { font-size: .85rem; color: var(--mute); padding: 10px 12px; display: grid; gap: 2px; }
+.christ figcaption b { font-family: var(--display); font-size: 1rem; color: var(--ink); font-weight: 600; }
 .christ .ph { display: none; aspect-ratio: 4 / 5; place-content: center; text-align: center; padding: 20px; background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 10px, var(--surface) 10px, var(--surface) 20px); color: var(--mute); font-size: .9rem; }
 .christ.missing img { display: none; }
 .christ.missing .ph { display: grid; }
